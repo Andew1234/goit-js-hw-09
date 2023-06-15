@@ -21,6 +21,8 @@ startBtn.addEventListener('click', () => {
   stopBtn.removeAttribute('disabled');
 });
 
+let interval;
+let intervalBox;
 stopBtn.addEventListener('click', () => {
   clearInterval(interval);
   clearInterval(intervalBox);

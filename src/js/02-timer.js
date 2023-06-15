@@ -22,9 +22,15 @@ const picker = flatpickr('#datetime-picker', {
   },
 });
 
-document.querySelector('[data-start]').addEventListener('click', () => {
+const startBtn = document.querySelector('[data-start]');
+const input = document.querySelector('#datetime-picker input');
+
+startBtn.addEventListener('click', () => {
   const selectedDate = picker.selectedDates[0];
   const countdownElement = document.querySelector('.timer');
+
+  startBtn.disabled = true;
+  input.disabled = true;
 
   const countdownInterval = setInterval(() => {
     const currentDate = new Date();
@@ -33,6 +39,8 @@ document.querySelector('[data-start]').addEventListener('click', () => {
     if (remainingTime <= 0) {
       clearInterval(countdownInterval);
       countdownElement.style.display = 'none';
+      startBtn.disabled = false;
+      input.disabled = false;
       return;
     }
 
